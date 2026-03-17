@@ -14,7 +14,7 @@ public class PaymentController {
     public PaymentController(PaymentService service){ this.service = service; }
 
     @PostMapping("/processPayment/v1")
-    public ResponseEntity<Payment> makePayment(@RequestBody PaymentRequest paymentRequest){
+    public ResponseEntity<Payment> processPayment(@RequestBody PaymentRequest paymentRequest){
         return ResponseEntity.status(201).body(service.makePayment(paymentRequest));
     }
 

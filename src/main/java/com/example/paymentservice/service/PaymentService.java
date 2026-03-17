@@ -1,6 +1,7 @@
 package com.example.paymentservice.service;
 
 import com.example.paymentservice.entity.Payment;
+import com.example.paymentservice.dto.PaymentRequest;
 import com.example.paymentservice.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -22,14 +23,15 @@ public class PaymentService {
         this.restTemplate = new RestTemplate();
     }
 
-    public Payment makePayment(Payment payment) {
-        String url = studentUrl + payment.getStudentId();
+    public Payment makePayment(PaymentRequest paymentRequest) {
+        String url = studentUrl + paymentRequest.getStudentId();
+        Payment payment = new Payment();
 
         restTemplate.getForObject(url, Object.class);
         payment.setReference(UUID.randomUUID().toString());
         payment.setTransactionDate(LocalDateTime.now());
-        payment.setFee(payment.getFee());
-        payment.setFeeType(payment.getFeeType());
+        payment.setFee(paymentRequest.getFee());
+        payment.setFeeType(paymentRequest.getFeeType());
         payment.setStatus("SUCCESS"); // For demo purposes
         return repo.save(payment);
     }

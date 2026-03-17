@@ -1,0 +1,14 @@
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class PaymentRequest {
+    private Long studentId;
+    private double fee;
+    private String feeType;
+    private String cardNumber;
+    private String cardType;
+}

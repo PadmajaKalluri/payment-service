@@ -23,7 +23,7 @@ Runs on: http://localhost:8082
 
 # API Endpoints
 Method	Endpoint	Description
-POST	/payments/makePayment	Make payment
+POST	/payments/processPayment/v1	Process payment
 GET	/payments/{id}	Get payment
 GET	/payments/student/{studentId}	Get payments by student
 

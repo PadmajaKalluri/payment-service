@@ -13,7 +13,7 @@ public class PaymentController {
     private final PaymentService service;
     public PaymentController(PaymentService service){ this.service = service; }
 
-    @PostMapping("/makePayment")
+    @PostMapping("/processPayment/v1")
     public ResponseEntity<Payment> makePayment(@RequestBody PaymentRequest paymentRequest){
         return ResponseEntity.status(201).body(service.makePayment(paymentRequest));
     }
